@@ -24,7 +24,6 @@ public class CustomRealm extends AuthorizingRealm {
         //从主体传过来的认证信息中，获取用户名
         String userName = (String) authenticationToken.getPrincipal();
         //通过用户名查询数据库，获取凭证
-        String str = "user";
 
         return null;
     }
