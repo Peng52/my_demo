@@ -4,6 +4,7 @@ import com.jack.shiro.ShiroApplicationTests;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.Subject;
 import org.apache.shiro.mgt.SecurityManager;
 import org.junit.Test;
@@ -28,12 +29,21 @@ public class CustomRealmTest extends ShiroApplicationTests {
         SecurityUtils.setSecurityManager(securityManager);
         SecurityUtils.setSecurityManager(securityManager);
         Subject subject = SecurityUtils.getSubject();
-        UsernamePasswordToken token = new UsernamePasswordToken("admin", "d3c59d25033dbf980d29554025c23a75");
+        UsernamePasswordToken token = new UsernamePasswordToken("admin", "123456");
         subject.login(token);
         log.info("认证："+subject.isAuthenticated());
-        subject.checkRole("admin");
+      /*  subject.checkRole("admin");
         subject.logout();
-        log.info("认证："+subject.isAuthenticated());
+        log.info("认证："+subject.isAuthenticated());*/
+
+    }
+
+
+    //md5 + salt 生成
+    @Test
+    public void test2(){
+        Md5Hash md5Hash = new Md5Hash("123456","admin");
+        System.out.println(md5Hash.toString());
 
     }
 

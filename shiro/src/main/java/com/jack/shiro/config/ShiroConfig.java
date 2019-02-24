@@ -1,6 +1,7 @@
 package com.jack.shiro.config;
 
 import com.jack.shiro.realm.CustomRealm;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -32,7 +33,12 @@ public class ShiroConfig {
     */
     @Bean("myRealm")
     public CustomRealm getCustomRealm(){
-        return new CustomRealm();
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(1);
+        CustomRealm realm = new CustomRealm();
+        realm.setCredentialsMatcher(matcher);
+        return realm;
     }
     /**
     *Filter
@@ -54,11 +60,11 @@ public class ShiroConfig {
         *前后端分离的项目不用写 登录页面和跳转页面
         */
         //设置登录页面,如果不设置，默认会自动寻找Web工程根目录下的"/login.jsp"页面
-        shiroFilterFactoryBean.setLoginUrl("/login");
+        //shiroFilterFactoryBean.setLoginUrl("/login");
         //设置登录成功后跳转的页面
-        shiroFilterFactoryBean.setSuccessUrl("/index");
+        //shiroFilterFactoryBean.setSuccessUrl("/index");
         //未授权界面
-        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+        //shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         return shiroFilterFactoryBean;
     }
