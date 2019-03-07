@@ -37,7 +37,7 @@ public class ShiroConfig {
     /**
     *Filter
     */
-    @Bean("filter")
+  /*  @Bean("filter")
     public ShiroFilterFactoryBean getShiroFilter(SecurityManager securityManager){
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
@@ -50,9 +50,9 @@ public class ShiroConfig {
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         filterMap.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterMap);
-        /**
+        *//**
         *前后端分离的项目不用写 登录页面和跳转页面
-        */
+        *//*
         //设置登录页面,如果不设置，默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
         //设置登录成功后跳转的页面
@@ -61,7 +61,7 @@ public class ShiroConfig {
         shiroFilterFactoryBean.setUnauthorizedUrl("/403");
 
         return shiroFilterFactoryBean;
-    }
+    }*/
 
 
 
