@@ -6,8 +6,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.jack.shiro.PushUser;
 import com.jack.shiro.ShiroApplicationTests;
 import com.jack.shiro.entity.UpdateUser;
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -169,7 +172,7 @@ public class FastJsonTest extends ShiroApplicationTests {
     }
     //demo
 
-   public static void main(String[] args){
+   public static void test8(String[] args){
         /**
         *转为大写
         */
@@ -191,8 +194,36 @@ public class FastJsonTest extends ShiroApplicationTests {
 
 
    }
+public static void main(String[] args){
+    int verify = verify("哈哈哈哈哈哈哈,哈");
+    System.out.println(verify);
 
-
-
+}
+    private static int verify(String params){
+        //一个标签时小于6个字符，两个标签小于8
+        String tagName = params;
+        if(tagName.length() > 10){
+            return 1;
+        }
+        String[] tags = tagName.split(",");
+        List<String> temp = new ArrayList<>();
+        for (String tag : tags){
+            if(StringUtils.isNotBlank(tag)){
+                temp.add(tag);
+            }
+        }
+        if(temp.size() == 2){
+            for (String str:temp){
+                if (str.length() > 4){
+                    return 1;
+                }
+            }
+        }else {
+            if(temp.size() != 1 || temp.get(0).length() > 6){
+               return 1;
+            }
+        }
+        return 2;
+    }
 
 }

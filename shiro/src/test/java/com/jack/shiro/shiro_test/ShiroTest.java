@@ -39,7 +39,12 @@ public class ShiroTest extends ShiroApplicationTests {
         subject.logout();
         log.info("认证："+subject.isAuthenticated());
 
+    }
 
+    //测试
+    @Test
+    public void test9(){
+        //test
     }
 
 
