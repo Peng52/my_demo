@@ -56,6 +56,12 @@ public class ShiroTest extends ShiroApplicationTests {
 
         //test #6
     }
+    //
+    @Test
+    public void test(){
+        //test #7
+}
+
 
 
 
