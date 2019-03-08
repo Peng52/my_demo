@@ -44,7 +44,9 @@ public class ShiroTest extends ShiroApplicationTests {
     //测试
     @Test
     public void test9(){
-        //test
+        //test #1
+
+        //test #2
     }
 
 
